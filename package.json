@@ -1,0 +1,12 @@
+{
+  "name": "kim-kelvin-kalu-portfolio",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "echo 'Use live server extension in VS Code'"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
