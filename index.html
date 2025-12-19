@@ -489,7 +489,7 @@
             letter-spacing: 1.5px;
         }
 
-        /* ===== FIXED IMAGE STYLES - CHANGED HERE ===== */
+        /* ===== FIXED IMAGE STYLES - UPDATED FOR PROPER FIT ===== */
         .image-container {
             position: relative;
             border-radius: var(--radius-xl);
@@ -498,7 +498,7 @@
             transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
             transition: all var(--transition-base);
             height: 500px;
-            background-color: var(--light-gray); /* Fallback color */
+            background-color: var(--light-gray);
         }
 
         .image-container:hover {
@@ -506,11 +506,11 @@
             box-shadow: var(--shadow-xl), var(--glow-blue);
         }
 
+        /* CHANGED: object-fit: cover to fill the container properly */
         .image-container img {
             width: 100%;
             height: 100%;
-            /* CHANGED: From object-fit: cover to contain to show full heads */
-            object-fit: contain;
+            object-fit: cover;
             object-position: center top;
             background-color: var(--light-gray);
             transition: transform var(--transition-base);
@@ -538,7 +538,7 @@
             opacity: 1;
         }
 
-        /* ===== NEW GALLERY SECTION ===== */
+        /* ===== GALLERY SECTION ===== */
         .gallery {
             background: linear-gradient(135deg, #ffffff 0%, var(--light-gray) 100%);
         }
@@ -557,7 +557,7 @@
             height: 300px;
             box-shadow: var(--shadow-lg);
             transition: all var(--transition-bounce);
-            background-color: var(--light-gray); /* Fallback color */
+            background-color: var(--light-gray);
         }
 
         .gallery-item:hover {
@@ -565,11 +565,11 @@
             box-shadow: var(--shadow-xl), var(--glow-blue);
         }
 
+        /* CHANGED: object-fit: cover to fill the container properly */
         .gallery-item img {
             width: 100%;
             height: 100%;
-            /* CHANGED: From object-fit: cover to contain to show full heads */
-            object-fit: contain;
+            object-fit: cover;
             object-position: center center;
             background-color: var(--light-gray);
             transition: transform var(--transition-base);
@@ -820,7 +820,7 @@
             font-size: var(--text-base);
         }
 
-        /* ===== FIXED CONTACT FORM - CHANGED HERE ===== */
+        /* ===== FIXED CONTACT FORM ===== */
         .contact-form {
             background: linear-gradient(135deg, var(--white) 0%, var(--light-gray) 100%);
             padding: var(--space-3xl);
@@ -1283,7 +1283,7 @@
                     </div>
                 </div>
                 <div class="image-container">
-                    <!-- IMPORTANT: Replace this with your actual portrait image -->
+                    <!-- Your Cloudinary Portrait Image -->
                     <img src="https://res.cloudinary.com/dyweczdw2/image/upload/v1766108789/WhatsApp_Image_2025-12-17_at_17.56.04_75ab09b0_snteij.jpg" alt="Kim Kelvin Kalu - Professional Portrait">
                     <div class="image-overlay">
                         <h3>Kim Kelvin Kalu</h3>
@@ -1303,7 +1303,7 @@
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <!-- IMPORTANT: Replace this with your first gallery image -->
+                    <!-- Your First Cloudinary Gallery Image -->
                     <img src="https://res.cloudinary.com/dyweczdw2/image/upload/v1766108789/WhatsApp_Image_2025-12-17_at_17.56.04_fcb457b2_er6els.jpg" alt="Public Speaking Engagement">
                     <div class="gallery-caption">
                         <h4>Public Speaking Engagement</h4>
@@ -1311,7 +1311,7 @@
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <!-- IMPORTANT: Replace this with your second gallery image -->
+                    <!-- Your Second Cloudinary Gallery Image -->
                     <img src="https://res.cloudinary.com/dyweczdw2/image/upload/v1766108789/WhatsApp_Image_2025-12-17_at_17.56.04_75ab09b0_snteij.jpg" alt="Media Strategy Session">
                     <div class="gallery-caption">
                         <h4>Media Strategy Session</h4>
@@ -1319,7 +1319,7 @@
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <!-- IMPORTANT: Replace this with your third gallery image -->
+                    <!-- Your Third Cloudinary Gallery Image -->
                     <img src="https://res.cloudinary.com/dyweczdw2/image/upload/v1766108789/WhatsApp_Image_2025-12-17_at_17.56.04_fcb457b2_er6els.jpg" alt="Stakeholder Engagement">
                     <div class="gallery-caption">
                         <h4>Stakeholder Engagement</h4>
@@ -1491,12 +1491,12 @@
                         </div>
                     </div>
                 </div>
-                <!-- FIXED CONTACT FORM WITH EMAIL INTEGRATION -->
+                <!-- FIXED CONTACT FORM WITH CORRECT REDIRECT -->
                 <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
-                    <!-- Web3Forms Access Key - GET THIS FROM https://web3forms.com -->
+                    <!-- REPLACE "59583f41-b345-4134-8a2d-a41fc670a8e3" WITH YOUR ACTUAL KEY FROM WEB3FORMS.COM -->
                     <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-                    <!-- Redirect after submission (optional) -->
-                    <input type="hidden" name="redirect" value="https://yourwebsite.com/thank-you.html">
+                    <!-- FIXED: Now redirects to your local thank-you.html file -->
+                    <input type="hidden" name="redirect" value="thank-you.html">
                     <!-- Subject for the email -->
                     <input type="hidden" name="subject" value="New Contact Form Submission - Kim Kelvin Kalu Portfolio">
                     
@@ -1599,7 +1599,6 @@
         const contactForm = document.querySelector('.contact-form');
         contactForm.addEventListener('submit', function(e) {
             // Let Web3Forms handle the submission
-            // You can add additional validation here if needed
             console.log('Form submitted to Web3Forms');
         });
 
@@ -1610,8 +1609,7 @@
                 galleryDots.forEach(d => d.classList.remove('active'));
                 this.classList.add('active');
                 
-                // You can add gallery slider functionality here
-                // This is a basic implementation
+                // Gallery slider functionality
                 const galleryItems = document.querySelectorAll('.gallery-item');
                 galleryItems.forEach(item => item.style.opacity = '0.5');
                 if (galleryItems[index]) {
